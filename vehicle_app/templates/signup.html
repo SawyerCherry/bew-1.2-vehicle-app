@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="authForm">
+    <form action='/signup' method='POST'>
+        {{ form.csrf_token }}
+        <h2>Create an Account</h2>
+
+        <div class="authInput">
+            {{ form.display_name.label }}
+            {{ form.display_name }}
+    
+            {% for error in form.display_name.errors %}
+            <p>{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <div class="authInput">
+            {{ form.username.label }}
+            {{ form.username }}
+    
+            {% for error in form.username.errors %}
+            <p>{{error}}</p>
+            {% endfor %}
+        </div>
+
+        <div class="authInput">
+            {{ form.password.label }}
+            {{ form.password }}
+    
+            {% for error in form.password.errors %}
+            <p>{{error}}</p>
+            {% endfor %}
+        </div>
+
+        {{ form.submit }}
+    </form>
+</div>
+
+
+
+{% endblock %}

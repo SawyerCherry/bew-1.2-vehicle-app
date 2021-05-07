@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 style="text-align: center;">New Vehicle</h1>
+
+<form action='/compose_twot' method='POST' class="make_vehicle">
+    {{ form.csrf_token }}
+        {{ form.manufacturer_name }}
+
+        {% for error in form.manufacturer_name.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+
+        {{ form.model }}
+
+        {% for error in form.model.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+
+        {{ form.vin }}
+        
+        {% for error in form.vin.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+
+        {{ form.submit }}
+</form>
+
+
+{% endblock %}
