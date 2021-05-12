@@ -2,7 +2,21 @@
 
 {% block content %}
 
+<h2>Vehicles</h2>
 
+<ul>
+{% for vehicle in all_vehicles %}
+    <li><a href="/vehicle/{{ vehicle.id }}">{{ vehicle.model }}</a> by {{ vehicle.manufacturer.name }}</li>
+{% endfor %}
+</ul>
+
+
+
+<ul>
+    {% for user in all_users %}
+        <li><a href="/profile/{{ user.username }}">{{ user.username }}</a></li>
+    {% endfor %}
+</ul>
 
 
 

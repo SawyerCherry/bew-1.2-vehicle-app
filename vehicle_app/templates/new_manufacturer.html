@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 style="text-align: center;">New Manufacturer</h1>
+
+<form action='/create_manufacturer' method='POST' class="make_manufacturer">
+    {{ form.csrf_token }}
+    <h5>Manufacturer Name:</h5>
+    {{ form.name }}
+
+    {% for error in form.name.errors %}
+    <p>{{error}}</p>
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    {{ form.submit }}
+</form>
+
+
+{% endblock %}

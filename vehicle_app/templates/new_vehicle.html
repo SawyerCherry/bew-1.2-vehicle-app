@@ -6,25 +6,30 @@
 
 <form action='/create_vehicle' method='POST' class="make_vehicle">
     {{ form.csrf_token }}
-        {{ form.manufacturer_name }}
+    <h5>Manufacturer Name:</h5>
+    {{ form.manufacturer }}
 
-        {% for error in form.manufacturer_name.errors %}
-        <p>{{error}}</p>
-        {% endfor %}
+    {% for error in form.manufacturer.errors %}
+    <p>{{error}}</p>
+    {% endfor %}
 
-        {{ form.model }}
+    <h5>Model:</h5>
+    {{ form.model }}
 
-        {% for error in form.model.errors %}
-        <p>{{error}}</p>
-        {% endfor %}
+    {% for error in form.model.errors %}
+    <p>{{error}}</p>
+    {% endfor %}
 
-        {{ form.vin }}
-        
-        {% for error in form.vin.errors %}
-        <p>{{error}}</p>
-        {% endfor %}
+    <h5>VIN:</h5>
+    {{ form.vin }}
 
-        {{ form.submit }}
+    {% for error in form.vin.errors %}
+    <p>{{error}}</p>
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    {{ form.submit }}
 </form>
 
 
