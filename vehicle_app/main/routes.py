@@ -20,7 +20,7 @@ main = Blueprint("main", __name__)
 @main.route('/')
 def homepage():
     all_vehicles = Vehicle.query.all()
-    return render_template('homepage.html', vehicle=all_vehicles)
+    return render_template('homepage.html', all_vehicles=all_vehicles)
 
 
 @main.route('/create_vehicle', methods=['GET', 'POST'])
@@ -61,20 +61,18 @@ def create_manufacturer():
 
 
 @main.route('/vehicle/<vehicle_id>', methods=['GET', 'POST'])
-def vehicle_detail(book_id):
+def vehicle_detail(vehicle_id):
     vehicle = Vehicle.query.get(vehicle_id)
-    form = BookForm(obj=book)
+    form = VehicleForm(obj=vehicle)
     
     # if form was submitted and contained no errors
     if form.validate_on_submit():
-        vehicle.title = form.title.data
-        vehicle.publish_date = form.publish_date.data
-        vehicle.author = form.author.data
-        
+        vehicle.model = form.model.data
+        vehicle.vin = form.vin.data
 
         db.session.commit()
 
         flash('Vehicle was updated successfully.')
-        return redirect(url_for('main.vehicle_detail', book_id=book_id))
+        return redirect(url_for('main.vehicle_detail', vehicle_id=vehicle_id))
 
-    return render_template('vehicle_detail.html', book=book, form=form)
+    return render_template('vehicle_detail.html', vehicle=vehicle, form=form)

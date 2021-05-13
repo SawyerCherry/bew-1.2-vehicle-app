@@ -2,23 +2,16 @@
 
 {% block content %}
 
-<h2>Vehicles</h2>
+<h2>Vehicles on our lot:</h2>
 
-<ul>
-{% for vehicle in all_vehicles %}
-    <li><a href="/vehicle/{{ vehicle.id }}">{{ vehicle.model }}</a> by {{ vehicle.manufacturer.name }}</li>
-{% endfor %}
-</ul>
-
-
-
-<ul>
-    {% for user in all_users %}
-        <li><a href="/profile/{{ user.username }}">{{ user.username }}</a></li>
-    {% endfor %}
-</ul>
-
-
-
+<div class="colordiv"></div>
+    <ul>
+        {% for vehicle in all_vehicles %}
+        <li><a href="/vehicle/{{ vehicle.id }}">{{ vehicle.model }}</a>
+            <h6>Manufactured by {{ vehicle.manufacturer.name }}</h6>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}

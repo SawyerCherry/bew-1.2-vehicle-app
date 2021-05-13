@@ -8,7 +8,7 @@ class Manufacturer(db.Model):
     name = db.Column(db.String(280), nullable=False)
     vehicles = db.relationship('Vehicle', back_populates='manufacturer')
 
-class Vehicle(db.Model, UserMixin):
+class Vehicle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     model = db.Column(db.String(280), nullable=False)
     vin = db.Column(db.String(280), nullable=False)

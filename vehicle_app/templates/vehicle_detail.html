@@ -2,62 +2,35 @@
 
 {% block content %}
 
-<h1>{{ book.title }}</h1>
 
-{% if current_user.is_authenticated %}
-    {% if book not in current_user.favorite_books %}
-    <form action="/favorite/{{ vehicle.id }}" method="POST">
-        <input type="submit" value="Favorite This Book">
-    </form>
-    {% else %}
-    <form action="/unfavorite/{{ book.id }}" method="POST">
-        <input type="submit" value="Unfavorite This Book">
-    </form>
-    {% endif %}
-{% endif %}
+
 
 <p>
-    <strong>Author</strong>: {{ book.author.name }}
+    <strong>Manufacturer:</strong> {{ vehicle.manufacturer.name }}
+</p>
+
+
+
+<p>
+    <strong>Model:</strong> {{ vehicle.model }}
 </p>
 
 <p>
-    <strong>Author Bio</strong>: {{ book.author.biography }}
+    <strong>Vehicle Identification Number(VIN):</strong> {{ vehicle.vin }}
 </p>
-
-{% if book.publish_date %}
 <p>
-    <strong>Publish date</strong>: {{ book.publish_date.strftime('%B %d, %Y') }}
-</p>
-{% endif %}
-
-<p>
-    <strong>Audience</strong>: {{ book.audience }}
-</p>
-
-<p>
-    <strong>Genres</strong>: 
-    
-    {% for  in book.genres %}
-    {{ genre.name }},
-    {% endfor %}
+    <strong>Edit this vehicle:</strong> 
 </p>
 
 <form method="POST" action="{{ url_for('main.vehicle_detail', vehicle_id=vehicle.id) }}">
     {{ form.csrf_token }}
     <fieldset>
-        <legend>Edit this Vehicle</legend>
+        {{ form.model.label }}
+        {{ form.model }}
 
-        {{ form.title.label }}
-        {{ form.title }}
-        
-        {{ form.publish_date.label }}
-        
-        {{ form.audience.label }}
-        {{ form.audience }}
-        
-        {{ form.genres.label }}
-        {{ form.genres }}
-            
+        {{ form.vin.label }}
+        {{ form.vin }}
+
         {{ form.submit }}
     </fieldset>
 </form>
