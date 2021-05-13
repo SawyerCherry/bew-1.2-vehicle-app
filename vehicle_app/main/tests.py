@@ -95,7 +95,7 @@ class MainTests(unittest.TestCase):
         self.assertEqual(manufacturer_created.name, 'Tesla')
 
     def test_create_vehicle_logged_out(self):
-        """see if the user is not able to create a vehicle unless they are logged in"""
+        """see if the user is not able to create a vehicle if they are logged out"""
         create_vehicle()
         create_user()
         response = self.app.get('/create_vehicle')
